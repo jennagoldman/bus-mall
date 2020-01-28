@@ -1,4 +1,4 @@
-export const productData = [
+const productData = [
     {
         id: 'bag',
         img: './assets/bag.jpg',
@@ -71,7 +71,7 @@ export const productData = [
     },
     {
         id: 'sweep',
-        img: './assets/sweep.jpg',
+        img: './assets/sweep.png',
         name: 'Sweep'
     },
     {
@@ -86,7 +86,7 @@ export const productData = [
     },
     {
         id: 'usb',
-        img: './assets/usb.jpg',
+        img: './assets/usb-small.jpg',
         name: 'USB'
     },
     {
@@ -100,3 +100,5 @@ export const productData = [
         name: 'Wine Glass'
     },
 ];
+
+export { productData };
