@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+header {
+    color: #FFF;
+    background: #0084FF;
+}
+
+header .container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+header h1, h2 {
+    margin: 0;
+}
+
+main {
+    width: 90%;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.centered {
+    text-align: center;
+}
+
+#images-container {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    display: none;
+}
+
+#images-container img {
+    border: 2px solid #0084FF;
+    margin: 10px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+input:checked + label{
+    border: 2px solid red;
+}
