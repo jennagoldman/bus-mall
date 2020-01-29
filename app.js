@@ -1,48 +1,56 @@
 // import data - 21 product objects in an array
-import { productData } from './productData.js';
-import { ProductArray } from './productArray.js';
+import { findById, displayThreeProducts } from './utils.js';
 
-const products = new ProductArray(productData);
+const form = document.querySelector('form');
 
-// get elements from DOM
-const productImage1 = document.getElementById('img1');
-const productImage2 = document.getElementById('img2');
-const productImage3 = document.getElementById('img3');
-const productInputs = document.querySelectorAll('input');
-const selectedInput = document.querySelector('input:checked');
-const submitSelectionButton = document.getElementById('submit-selection-button');
 
 // initialize state
 let numberOfSelections = 0;
+let productVotesDetails = [];
+
+displayThreeProducts();
 
 // change state
-submitSelectionButton.addEventListener('click', () => {
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const stringyResultsHistory = localStorage.getItem('results');
+
     const selectedInput = document.querySelector('input:checked');
+    const selectedProduct = selectedInput.value;
+
     numberOfSelections++;
 
-    console.log(selectedInput.id);
-    console.log(numberOfSelections);
+    const productInVotesArray = findById(productVotesDetails, selectedProduct); 
+    if (productInVotesArray) {
+        productInVotesArray.votes++;
+    } else {
+        productVotesDetails.push({
+            id: selectedProduct,
+            votes: 1
+        });
+    }
+
+        // clear out previous input selection
+    document.querySelector('input[name="products"]:checked').checked = false;
+    
+        // generate 3 new products and images
+    displayThreeProducts();
+    // send user to Results page after 25
+    if (numberOfSelections === 25) {
+        // get localStorage
+        localStorage.getItem('results');
+        // stringify results array
+        const stringyResults = JSON.stringify(productVotesDetails);
+        //set results array into local storage
+        localStorage.setItem('results', stringyResults);
+
+        // Alert about completing selections and impending redirect
+        alert('Thanks for participating! You will now be redirected to your Results Summary.');
+
+        // redirect user to Results page
+        window.location = './results.html';
+    }
+
+
 });
-
-
-// setup random image generation logic
-const randomProduct1 = products.getRandomProduct();
-let randomProduct2 = products.getRandomProduct();
-let randomProduct3 = products.getRandomProduct();
-
-while (randomProduct1 === randomProduct2) {
-    randomProduct2 = products.getRandomProduct();
-}
-
-while (randomProduct1 === randomProduct3) {
-    randomProduct3 = products.getRandomProduct();
-}
-
-while (randomProduct2 === randomProduct3) {
-    randomProduct3 = products.getRandomProduct();
-}
-
-// populate random images in image src
-productImage1.src = randomProduct1.img;
-productImage2.src = randomProduct2.img;
-productImage3.src = randomProduct3.img;

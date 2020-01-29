@@ -18,16 +18,24 @@
     </header>
 
     <main>
-        <h3 class="centered">Select which image you would be most likely to purchase:</h3>
+        <p class="centered">Select the image that represents the product you would be most likely to purchase:</p>
         <div id="images-container">
-            <input type="radio" name="products" value="" id="product1-input">
-                <label for="product1-input"><img src="" id="img1"></label>
-            <input type="radio" name="products" value="" id="product2-input">
-                <label for="product2-input"><img src="" id="img2"></label for="product1-input">
-            <input type="radio" name="products" value="" id="product3-input">
-                <label for="product3-input"><img src="" id="img3"></label for="product1-input">
+            <form>
+                <label for="product1-input" id="product1-label">
+                <input type="radio" name="products" value="" id="product1-input" />
+                    <img src="" id="img1" />
+                </label>
+                <label for="product2-input" id="product2-label">
+                <input type="radio" name="products" value="" id="product2-input" />
+                    <img src="" id="img2" />
+                </label>
+                <label for="product3-input" id="product3-label">
+                <input type="radio" name="products" value="" id="product3-input" />
+                    <img src="" id="img3" />
+                </label>
+                <button id="submit-selection-button">Submit Selection</button>
+            </form>
         </div>
-        <button id="submit-selection-button">Submit Selection</button>
     </main>
 
     <footer>

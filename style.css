@@ -37,17 +37,35 @@ main {
     justify-content: center;
 }
 
+label {
+    text-align: center;
+    display: inline-block;
+}
+
 input {
     display: none;
 }
 
 #images-container img {
-    border: 2px solid #0084FF;
     margin: 10px;
     padding: 15px;
     cursor: pointer;
 }
 
-input:checked + label{
-    border: 2px solid red;
+input:checked + img {
+    border: 3px solid #0084FF;
+}
+
+#submit-selection-button {
+    color: #FFF;
+    background: #0084FF;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    cursor: pointer;
 }
