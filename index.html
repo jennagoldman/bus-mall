@@ -18,23 +18,30 @@
     </header>
 
     <main>
-        <p class="centered">Select the image that represents the product you would be most likely to purchase:</p>
-        <div id="images-container">
-            <form>
-                <label for="product1-input" id="product1-label">
-                <input type="radio" name="products" value="" id="product1-input" />
-                    <img src="" id="img1" />
-                </label>
-                <label for="product2-input" id="product2-label">
-                <input type="radio" name="products" value="" id="product2-input" />
-                    <img src="" id="img2" />
-                </label>
-                <label for="product3-input" id="product3-label">
-                <input type="radio" name="products" value="" id="product3-input" />
-                    <img src="" id="img3" />
-                </label>
-                <button id="submit-selection-button">Submit Selection</button>
-            </form>
+        <div id="results-container">
+            <p class="centered">Session Results</p>
+            <canvas id="session-results-history" width="500" height="300"></canvas>
+            <button id="reset-button">Reset Selections</button>
+        </div>
+        <div id="product-selection">
+            <p class="centered">Select the image that represents the product you would be most likely to purchase:</p>
+            <div id="images-container">
+                <form>
+                    <label for="product1-input" id="product1-label">
+                    <input type="radio" name="products" value="" id="product1-input" />
+                        <img src="" id="img1" />
+                    </label>
+                    <label for="product2-input" id="product2-label">
+                    <input type="radio" name="products" value="" id="product2-input" />
+                        <img src="" id="img2" />
+                    </label>
+                    <label for="product3-input" id="product3-label">
+                    <input type="radio" name="products" value="" id="product3-input" />
+                        <img src="" id="img3" />
+                    </label>
+                    <button id="submit-selection-button">Submit Selection</button>
+                </form>
+            </div>
         </div>
     </main>
 
@@ -42,6 +49,7 @@
 
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
     <script type="module" src="app.js"></script>
 </body>
 
