@@ -9,7 +9,8 @@ body {
 
 header {
     color: #FFF;
-    background: #0084FF;
+    background-image: linear-gradient(to right, #2596FF, #00FF73);
+    font-family: 'Saira', sans-serif;
 }
 
 header .container {
@@ -20,6 +21,14 @@ header .container {
 
 header h1, h2 {
     margin: 0;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 300;
 }
 
 main {
@@ -59,14 +68,15 @@ input {
 }
 
 input:checked + img {
-    border: 3px solid #0084FF;
+    border: 3px solid #2596FF;
 }
 
 button {
     color: #FFF;
-    background: #0084FF;
+    background: #2596FF;
+    font-family: 'Saira', sans-serif;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     text-transform: uppercase;
     border: none;
     border-radius: 5px;

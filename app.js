@@ -1,27 +1,31 @@
 // import data - 21 product objects in an array
-import { findById, displayThreeProducts } from './utils.js';
+import { findById, displayThreeProducts } from './utils/utils.js';
+import { displaySessionResults } from './results/displaySessionResults.js';
 
+// get needed elements from DOM
 const resultsDiv = document.getElementById('results-container');
 const productSelectionDiv = document.getElementById('product-selection');
 const resetButton = document.getElementById('reset-button');
-const sessionResultsCanvas = document.getElementById('session-results-history');
 const form = document.querySelector('form');
 
 // initialize state
 let numberOfSelections = 0;
 let productVotesDetails = [];
 
+// display 3 random products
 displayThreeProducts();
 
-// change state
+// on selection submission:
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const selectedInput = document.querySelector('input:checked');
     const selectedProduct = selectedInput.value;
 
+    // increment the total number of session selections
     numberOfSelections++;
 
+    // increase the number of votes if product has been selected already, otherwise add the product with 1 vote
     const productInVotesArray = findById(productVotesDetails, selectedProduct); 
     if (productInVotesArray) {
         productInVotesArray.votes++;
@@ -39,55 +43,18 @@ form.addEventListener('submit', (e) => {
     displayThreeProducts();
 
     // show user session results after 25 selections
-    if (numberOfSelections === 5) {
-        // get localStorage
-        localStorage.getItem('alltime-results');
-        // stringify results array
-        const stringyResults = JSON.stringify(productVotesDetails);
-        //set results array into local storage
-        localStorage.setItem('alltime-results', stringyResults);
+    if (numberOfSelections === 25) {
 
         // Alert about completing selections and impending redirect
-        alert('Thanks for participating! You will now be redirected to your Results Summary.');
+        alert('Thanks for participating! You will now be shown your Results Summary.');
 
-        // display session results on page using Chart.js
+        // display session results
         productSelectionDiv.style.display = 'none';
         resultsDiv.style.display = 'block';
 
-        const votes = [];
-        const labels = [];
+        displaySessionResults(productVotesDetails);
 
-        productVotesDetails.forEach(item => {
-            votes.push(item.votes);
-            labels.push(item.id);
-        });
-
-        const ctx = sessionResultsCanvas.getContext('2d');
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: '# of Votes',
-                    data: votes,
-                    backgroundColor: ['#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF', '#0084FF']
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
     }
-
-    
-
 });
 
 resetButton.addEventListener('click', () => {

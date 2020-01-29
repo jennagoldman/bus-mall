@@ -1,5 +1,4 @@
-import { ProductArray } from './ProductArray.js';
-import { productData } from './productData.js';
+import { productData } from '../data/productData.js';
 
 // get product label elements
 
@@ -12,21 +11,27 @@ const productInput3 = document.getElementById('product3-input');
 const productImage1 = document.getElementById('img1');
 const productImage2 = document.getElementById('img2');
 const productImage3 = document.getElementById('img3');
-const products = new ProductArray(productData);
+const products = productData.slice();
 
 // setup random image generation logic
+export function getRandomProduct() {
+    const randomProductIndex = Math.floor(Math.random() * products.length);
+    return products[randomProductIndex];
+}
+
+
 export function displayThreeProducts() {
-    const randomProduct1 = products.getRandomProduct();
-    let randomProduct2 = products.getRandomProduct();
-    let randomProduct3 = products.getRandomProduct();
+    const randomProduct1 = getRandomProduct();
+    let randomProduct2 = getRandomProduct();
+    let randomProduct3 = getRandomProduct();
     while (randomProduct1 === randomProduct2) {
-        randomProduct2 = products.getRandomProduct();
+        randomProduct2 = getRandomProduct();
     }
     while (randomProduct1 === randomProduct3) {
-        randomProduct3 = products.getRandomProduct();
+        randomProduct3 = getRandomProduct();
     }
     while (randomProduct2 === randomProduct3) {
-        randomProduct3 = products.getRandomProduct();
+        randomProduct3 = getRandomProduct();
     }
     // populate input values with product id
     productInput1.value = randomProduct1.id;
@@ -37,3 +42,16 @@ export function displayThreeProducts() {
     productImage2.src = randomProduct2.img;
     productImage3.src = randomProduct3.img;
 }
+
+
+
+export const findById = (someArray, someId) => {
+    for (let i = 0; i < someArray.length; i++) {
+        const item = someArray[i];
+
+        // check the id against item.id
+        if (item.id === someId) {
+            return item;
+        }
+    } return null;
+};
