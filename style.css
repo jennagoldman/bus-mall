@@ -9,7 +9,8 @@ body {
 
 header {
     color: #FFF;
-    background: #0084FF;
+    background-image: linear-gradient(to right, #2596FF, #00FF73);
+    font-family: 'Saira', sans-serif;
 }
 
 header .container {
@@ -22,10 +23,24 @@ header h1, h2 {
     margin: 0;
 }
 
+h1 {
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 300;
+}
+
 main {
     width: 90%;
     margin: 25px auto;
     padding: 15px;
+}
+
+#results-container {
+    width: 600px;
+    margin: 0 auto;
+    display:none;
 }
 
 .centered {
@@ -37,17 +52,36 @@ main {
     justify-content: center;
 }
 
+label {
+    text-align: center;
+    display: inline-block;
+}
+
 input {
     display: none;
 }
 
 #images-container img {
-    border: 2px solid #0084FF;
     margin: 10px;
     padding: 15px;
     cursor: pointer;
 }
 
-input:checked + label{
-    border: 2px solid red;
+input:checked + img {
+    border: 3px solid #2596FF;
+}
+
+button {
+    color: #FFF;
+    background: #2596FF;
+    font-family: 'Saira', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    cursor: pointer;
 }
